@@ -1,3 +1,4 @@
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Hi-everyone)](https://git.io/typing-svg)
 - 👋 Hi, I’m adawo
 - 👀 I’m interested will I become a real IT programmer?
 - 🌱 I’m currently learning JAVA and GameMaker studio2
