@@ -26,7 +26,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-mountains-dark.svg"><img src="assets/h-mountains-light.svg" alt="02: commit mountains" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/mountains-dark.svg"><img src="assets/mountains-light.svg" alt="My last year of contributions as a mountain range: 76 contributions, best week 12. Every repository of mine is a tree." width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/mountains-dark.svg"><img src="assets/mountains-light.svg" alt="My last year of contributions as a mountain range: 77 contributions, best week 12. Every repository of mine is a tree." width="100%"></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-stack-dark.svg"><img src="assets/h-stack-light.svg" alt="03: stack" width="100%"></picture>
 
@@ -34,7 +34,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-work-dark.svg"><img src="assets/h-work-light.svg" alt="04: repositories" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/numbers-dark.svg"><img src="assets/numbers-light.svg" alt="37 public repositories, 76 contributions in the last year" width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/numbers-dark.svg"><img src="assets/numbers-light.svg" alt="37 public repositories, 77 contributions in the last year" width="100%"></picture>
 
 <p align="center">
   <a href="https://github.com/adawo-kai/liketime-app" title="liketime-app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-1-dark.svg"><img src="assets/card-1-light.svg" alt="liketime-app: Attendance tracking and payroll for teachers. Java 21, Spring Boot, MySQL and Flyway on the server, React and TypeScript in front." width="49%"></picture></a>

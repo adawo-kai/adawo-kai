@@ -37,7 +37,7 @@ def hero(t, k):
     pw, ph = d['cols'] * cw, d['rows'] * rh
     body = ['<rect x="0.5" y="0.5" width="%d" height="%d" rx="16" fill="%s" stroke="%s"/>' % (W - 1, H - 1, t['panel'], t['line'])]
     body.append('<defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%s" stop-opacity="0"/>'
-                '<stop offset=".5" stop-color="%s" stop-opacity=".16"/><stop offset="1" stop-color="%s" stop-opacity="0"/></linearGradient>'
+                '<stop offset=".5" stop-color="%s" stop-opacity=".09"/><stop offset="1" stop-color="%s" stop-opacity="0"/></linearGradient>'
                 '<clipPath id="pc"><rect x="%.1f" y="%.1f" width="%.1f" height="%.1f"/></clipPath></defs>' % (t['glow'], t['glow'], t['glow'], px0, py0, pw, ph))
     body.append('<g>%s</g>' % ''.join(rows))
     body.append('<g clip-path="url(#pc)"><rect class="scan" x="%.1f" y="%.1f" width="%.1f" height="54" fill="url(#sg)"/></g>' % (px0, py0 - 54, pw))

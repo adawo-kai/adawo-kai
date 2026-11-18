@@ -329,7 +329,9 @@ def snake(d, f):
     """my own contribution snake: it runs a closed serpentine lap over the last year, eats what it passes, the cells grow back half a lap later"""
     def draw(t, k):
         days = d['days']
-        cols = (len(days) + 6) // 7
+        y0, m0, d0 = (int(v) for v in days[0]['date'].split('-'))
+        off = (datetime.date(y0, m0, d0).weekday() + 1) % 7          # rows are weekdays, Sunday on top, like GitHub's own graph
+        cols = (len(days) + off + 6) // 7
         cell, gap = 11, 4; step = cell + gap
         gx = (W - cols * step + gap) / 2.0; gy = 34
         H = gy + 7 * step + 46
@@ -357,13 +359,13 @@ def snake(d, f):
         b = ['<rect x="0.5" y="0.5" width="%d" height="%d" rx="16" fill="%s" stroke="%s"/>' % (W - 1, H - 1, t['panel'], t['line'])]
         last_m = None
         for c_ in range(cols):
-            m = int(days[min(len(days) - 1, c_ * 7)]['date'][5:7])
+            m = int(days[max(0, min(len(days) - 1, c_ * 7 - off))]['date'][5:7])
             if m != last_m and 0 < c_ < cols - 2:
                 b.append('<text class="m" x="%.1f" y="24" font-size="9.5" fill="%s">%s</text>' % (gx + c_ * step, t['mute'], MONTHS[m - 1].lower()))
             last_m = m
         eaten = 0
         for i, x in enumerate(days):
-            c_, r = i // 7, i % 7
+            c_, r = (i + off) // 7, (i + off) % 7
             px, py = gx + c_ * step, gy + r * step
             b.append('<rect x="%.1f" y="%.1f" width="%d" height="%d" rx="3" fill="%s"/>' % (px, py, cell, cell, pal[lev(x['n'])]))
             if x['n']:
