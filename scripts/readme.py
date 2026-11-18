@@ -22,13 +22,13 @@ def write(d, f, feat):
 
     o.append(head('room'))
     o.append(pic('room', 'My room right now: the window shows my local time of day, the clouds depend on how much I committed this week, '
-                 'the monitor shows my last push, the books are my languages.'))
+                 'the monitor shows my last push, the books are my languages, and a TV Girl record spins under the poster.'))
     o.append('<details>\n<summary><b>How does the room work?</b></summary>\n<br>\n\n'
              '- <b>The window</b> is my local time (UTC%+d): dawn, day, dusk or night with a moon and stars.\n'
              '- <b>The weather is my commits.</b> No contributions for a week and the sky is overcast; ten or more and it is clear. A commit today sends a shooting star across the night sky.\n'
              '- <b>The monitor</b> shows the repository I pushed to last. Two quiet weeks and it falls asleep.\n'
              '- <b>The books</b> are my languages, each as tall as its share of my public code. <b>The plant</b> grows a leaf for every dozen contributions.\n'
-             '- <b>The clock and the calendar</b> show the minute the picture was drawn.\n'
+             '- <b>The clock</b> shows the minute the picture was drawn. <b>The poster</b> is TV Girl; the record under it never stops, and the track in the status line changes every day.\n'
              '- No server and no trackers: <a href="scripts/live_parts.py"><code>scripts/live_parts.py</code></a> draws plain SVG from the public GitHub API, '
              'and <a href="scripts/build.py"><code>scripts/build.py</code></a> redraws everything in one run.\n\n</details>' % c['utc_offset_hours'])
 
@@ -40,9 +40,6 @@ def write(d, f, feat):
 
     o.append(head('work'))
     o.append(pic('numbers', '%d public repositories, %d contributions in the last year' % (len(d['repos']), d['total'])))
-    cards = ['<a href="%s" title="%s">%s</a>' % (r['url'], esc(r['name']), pic('card-%d' % (i + 1), '%s: %s' % (r['name'], r['desc']), 'width="49.5%"')) for i, r in enumerate(feat)]
-    for i in range(0, len(cards), 2):            # two cards per row, a paragraph per row so the rows keep a gap
-        o.append('<p align="center">\n  ' + '\n  '.join(cards[i:i + 2]) + '\n</p>')
     rows = []
     for r in d['repos']:
         rows.append('<tr><td><a href="%s" title="%s"><b>%s</b></a>%s</td><td>%s</td><td>%s&nbsp;%s</td></tr>'
@@ -51,7 +48,7 @@ def write(d, f, feat):
              '<th align="left">last push</th></tr>\n%s\n</table>\n\n</details>' % (len(d['repos']), '\n'.join(rows)))
 
     o.append(head('snake'))
-    o.append(pic('snake', 'A snake eating my contribution graph of the last year'))
+    o.append(pic('snake', 'A snake running laps over a field of cerulean squares and eating them'))
     o.append(pic('footer', ''))
     text = '\n\n'.join(o) + '\n'
     with open(os.path.join(ROOT, 'README.md'), 'w', encoding='utf-8', newline='\n') as fh:

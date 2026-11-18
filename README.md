@@ -9,7 +9,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-room-dark.svg"><img src="assets/h-room-light.svg" alt="01: live room" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/room-dark.svg"><img src="assets/room-light.svg" alt="My room right now: the window shows my local time of day, the clouds depend on how much I committed this week, the monitor shows my last push, the books are my languages." width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/room-dark.svg"><img src="assets/room-light.svg" alt="My room right now: the window shows my local time of day, the clouds depend on how much I committed this week, the monitor shows my last push, the books are my languages, and a TV Girl record spins under the poster." width="100%"></picture>
 
 <details>
 <summary><b>How does the room work?</b></summary>
@@ -19,14 +19,14 @@
 - <b>The weather is my commits.</b> No contributions for a week and the sky is overcast; ten or more and it is clear. A commit today sends a shooting star across the night sky.
 - <b>The monitor</b> shows the repository I pushed to last. Two quiet weeks and it falls asleep.
 - <b>The books</b> are my languages, each as tall as its share of my public code. <b>The plant</b> grows a leaf for every dozen contributions.
-- <b>The clock and the calendar</b> show the minute the picture was drawn.
+- <b>The clock</b> shows the minute the picture was drawn. <b>The poster</b> is TV Girl; the record under it never stops, and the track in the status line changes every day.
 - No server and no trackers: <a href="scripts/live_parts.py"><code>scripts/live_parts.py</code></a> draws plain SVG from the public GitHub API, and <a href="scripts/build.py"><code>scripts/build.py</code></a> redraws everything in one run.
 
 </details>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-mountains-dark.svg"><img src="assets/h-mountains-light.svg" alt="02: commit mountains" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/mountains-dark.svg"><img src="assets/mountains-light.svg" alt="My last year of contributions as a mountain range: 78 contributions, best week 12. Every repository of mine is a tree." width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/mountains-dark.svg"><img src="assets/mountains-light.svg" alt="My last year of contributions as a mountain range: 79 contributions, best week 12. Every repository of mine is a tree." width="100%"></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-stack-dark.svg"><img src="assets/h-stack-light.svg" alt="03: stack" width="100%"></picture>
 
@@ -34,17 +34,7 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-work-dark.svg"><img src="assets/h-work-light.svg" alt="04: repositories" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/numbers-dark.svg"><img src="assets/numbers-light.svg" alt="37 public repositories, 78 contributions in the last year" width="100%"></picture>
-
-<p align="center">
-  <a href="https://github.com/adawo-kai/liketime-app" title="liketime-app"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-1-dark.svg"><img src="assets/card-1-light.svg" alt="liketime-app: Attendance tracking and payroll for teachers. Java 21, Spring Boot, MySQL and Flyway on the server, React and TypeScript in front." width="49.5%"></picture></a>
-  <a href="https://github.com/adawo-kai/depak-fashion" title="depak-fashion"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-2-dark.svg"><img src="assets/card-2-light.svg" alt="depak-fashion: Landing page for DEPAK.fashion, a mountain clothing brand. Astro, serverless functions, a lead form wired to Supabase and Telegram." width="49.5%"></picture></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/adawo-kai/NexusFlow" title="NexusFlow"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-3-dark.svg"><img src="assets/card-3-light.svg" alt="NexusFlow: A plain to-do list dressed in a space theme." width="49.5%"></picture></a>
-  <a href="https://github.com/adawo-kai/sky-journey-tour" title="sky-journey-tour"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/card-4-dark.svg"><img src="assets/card-4-light.svg" alt="sky-journey-tour: Landing page for a tour company, built by hand in HTML." width="49.5%"></picture></a>
-</p>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/numbers-dark.svg"><img src="assets/numbers-light.svg" alt="37 public repositories, 79 contributions in the last year" width="100%"></picture>
 
 <details>
 <summary><b>All 37 public repositories</b></summary>
@@ -95,6 +85,6 @@
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-snake-dark.svg"><img src="assets/h-snake-light.svg" alt="05: the snake" width="100%"></picture>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/snake-dark.svg"><img src="assets/snake-light.svg" alt="A snake eating my contribution graph of the last year" width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/snake-dark.svg"><img src="assets/snake-light.svg" alt="A snake running laps over a field of cerulean squares and eating them" width="100%"></picture>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg"><img src="assets/footer-light.svg" alt="" width="100%"></picture>

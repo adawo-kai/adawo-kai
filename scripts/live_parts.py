@@ -1,5 +1,5 @@
 """Parts drawn from live data: the room, the commit mountains, the numbers, repository cards. Standard library only."""
-import datetime, math, os, random, textwrap
+import datetime, hashlib, math, os, random, textwrap
 from common import *
 import data as D
 
@@ -110,14 +110,28 @@ def room(d, f):
         b.append('<line x1="%d" y1="%d" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="3" stroke-linecap="round"/>' % (cx, cy, cx + math.sin(ha) * 12, cy - math.cos(ha) * 12, t['ink']))
         b.append('<line x1="%d" y1="%d" x2="%.1f" y2="%.1f" stroke="%s" stroke-width="2" stroke-linecap="round"/>' % (cx, cy, cx + math.sin(ma) * 18, cy - math.cos(ma) * 18, t['hi']))
         b.append('<circle cx="%d" cy="%d" r="2.5" fill="%s"/>' % (cx, cy, t['hi']))
-        # ---- tear-off calendar
-        kx, ky = 318, 126
-        b.append('<rect x="%d" y="%d" width="58" height="68" rx="7" fill="%s" stroke="%s"/>' % (kx, ky, t['panel2'], t['line']))
-        b.append('<path d="M%d %d h44 a7 7 0 0 1 7 7 v11 h-58 v-11 a7 7 0 0 1 7 -7 z" fill="%s"/>' % (kx + 7, ky, t['core']))
-        b.append('<text class="m" x="%d" y="%d" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.5">%s</text>'
-                 % (kx + 29, ky + 13, MONTHS[f['now'].month - 1].upper()))
-        b.append('<text x="%d" y="%d" font-size="26" font-weight="700" fill="%s" text-anchor="middle">%d</text>' % (kx + 29, ky + 46, t['ink'], f['now'].day))
-        b.append('<text class="m" x="%d" y="%d" font-size="9.5" fill="%s" text-anchor="middle">7d: %d</text>' % (kx + 29, ky + 60, t['mute'], f['week7']))
+        # ---- on the wall: a TV Girl poster (my own drawing, a nod to the band) with a record that keeps spinning
+        kx, ky, kw, kh = 308, 112, 74, 98
+        vx, vy, vr = kx + kw + 4, ky + kh - 30, 21
+        b.append('<g class="spin" style="transform-origin:%dpx %dpx"><circle cx="%d" cy="%d" r="%d" fill="#04161F"/>' % (vx, vy, vx, vy, vr))
+        for rr in (17, 14, 11):
+            b.append('<circle cx="%d" cy="%d" r="%d" fill="none" stroke="#16485C" stroke-width=".8"/>' % (vx, vy, rr))
+        b.append('<circle cx="%d" cy="%d" r="7.5" fill="%s"/><rect x="%.1f" y="%.1f" width="5" height="2.4" fill="#E6F8FE"/><circle cx="%d" cy="%d" r="1.4" fill="#04161F"/></g>'
+                 % (vx, vy, t['hi'], vx + 1.5, vy - 5.2, vx, vy))
+        b.append('<rect x="%d" y="%d" width="%d" height="%d" rx="4" fill="#0A6A8F"/>' % (kx, ky, kw, kh))
+        b.append('<clipPath id="tvc"><rect x="%d" y="%d" width="%d" height="%d" rx="4"/></clipPath><g clip-path="url(#tvc)">' % (kx, ky, kw, kh))
+        b.append('<rect x="%d" y="%d" width="%d" height="%d" fill="#1794C4" opacity=".55"/>' % (kx, ky + 22, kw, kh - 22))
+        hx, hy = kx + kw / 2.0, ky + 52
+        b.append('<path d="M%.1f %.1f q-17 12 -27 38 h54 q-10 -26 -27 -38 z" fill="#04384D"/>' % (hx, hy + 18))                           # shoulders
+        b.append('<rect x="%.1f" y="%.1f" width="9" height="13" fill="#9ADDF5"/>' % (hx - 4.5, hy + 8))                                    # neck
+        b.append('<ellipse cx="%.1f" cy="%.1f" rx="11.5" ry="14" fill="#C3E4F1"/>' % (hx, hy))                                              # face
+        b.append('<path d="M%.1f %.1f c-20 -2 -22 20 -16 31 c2 -11 3 -19 7 -23 c7 4 16 4 23 -1 c2 6 2 14 3 23 c7 -12 4 -32 -17 -30 z" fill="#04384D"/>' % (hx, hy - 17))   # bob haircut
+        b.append('<path d="M%.1f %.1f q2.5 1.8 5 0 M%.1f %.1f q2.5 1.8 5 0" fill="none" stroke="#04384D" stroke-width="1.1" stroke-linecap="round"/>' % (hx - 7.5, hy + 1, hx + 2.5, hy + 1))
+        b.append('<path d="M%.1f %.1f q2.6 1.6 5.2 0" fill="none" stroke="#0A6A8F" stroke-width="1.3" stroke-linecap="round"/>' % (hx - 2.6, hy + 8))
+        b.append('</g>')
+        b.append('<text x="%.1f" y="%d" font-size="11.5" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.6">TV GIRL</text>' % (hx, ky + 15))
+        b.append('<text x="%.1f" y="%d" font-size="7.4" font-style="italic" fill="#E6F8FE" text-anchor="middle" letter-spacing=".6">french exit</text>' % (hx, ky + kh - 6))
+        b.append('<rect x="%d" y="%d" width="%d" height="%d" rx="4" fill="none" stroke="%s" stroke-width="3"/>' % (kx, ky, kw, kh, fr))
         # ---- shelf: one book per language, as tall as its share of my code; the plant grows with contributions
         sx0, sy = 420, 128
         b.append('<rect x="%d" y="%d" width="390" height="6" rx="3" fill="%s"/>' % (sx0, sy, fr))
@@ -178,6 +192,9 @@ def room(d, f):
         # ---- status line
         st = '%02d:%02d utc%+d  /  %s  /  sky: %s (%d contribution%s in 7 days)' % (f['now'].hour, f['now'].minute, cfg()['utc_offset_hours'], f['phase'],
                                                                                     f['sky'], f['week7'], '' if f['week7'] == 1 else 's')
+        mu = cfg().get('music')
+        if mu and mu.get('tracks'):                      # a different track every day
+            st += '  /  on repeat: %s, %s' % (mu['artist'], mu['tracks'][f['now'].timetuple().tm_yday % len(mu['tracks'])])
         b.append('<text class="m" x="24" y="%d" font-size="11.3" fill="%s" letter-spacing=".4">%s</text>' % (H - 22, t['soft'], esc(st)))
         b.append('<circle class="live" cx="%d" cy="%d" r="4" fill="%s"/><text class="m" x="%d" y="%d" font-size="11.3" fill="%s" text-anchor="end">live</text>'
                  % (W - 28, H - 26, t['hi'], W - 40, H - 22, t['hi']))
@@ -189,7 +206,7 @@ def room(d, f):
                '.leaf{animation:lf 5s ease-in-out infinite;transform-box:fill-box;transform-origin:bottom center}@keyframes lf{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(2deg)}}'
                '.glowc{animation:gl 5s ease-in-out infinite}@keyframes gl{0%,100%{opacity:1}50%{opacity:.75}}'
                '.live{animation:lv 1.8s ease-in-out infinite}@keyframes lv{0%,100%{opacity:1}50%{opacity:.2}}'
-               '.zz{animation:lv 3s ease-in-out infinite}'
+               '.zz{animation:lv 3s ease-in-out infinite}.spin{animation:spin 3.4s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}'
                '.shoot{stroke-dasharray:44;animation:sh 6s ease-in infinite}@keyframes sh{0%,70%{stroke-dashoffset:44;opacity:0}75%{opacity:1}100%{stroke-dashoffset:-44;opacity:0}}')
         return svg(W, H, ''.join(b), 'My room right now: %s, %s sky, last push to %s %s' % (f['phase'], f['sky'], f['last']['name'] if f['last'] else '-', ago_text(f['ago'] or 0)), css)
     return draw
@@ -338,6 +355,15 @@ def snake(d, f):
         nz = sorted(x['n'] for x in days if x['n'])
         qs = [nz[int(len(nz) * q)] for q in (0.25, 0.5, 0.75)] if nz else [1, 2, 3]
         lev = lambda n: 0 if n == 0 else 1 + sum(n > q for q in qs)
+
+        def field(x):
+            # a made-up but steady pattern keyed to the date, so it does not jump between builds
+            v = int(hashlib.md5(x['date'].encode()).hexdigest()[:8], 16) / float(0xffffffff)
+            yy, mm, dd = (int(q) for q in x['date'].split('-'))
+            if datetime.date(yy, mm, dd).weekday() >= 5:
+                v *= 0.78
+            made = 0 if v < 0.46 else 1 if v < 0.68 else 2 if v < 0.84 else 3 if v < 0.94 else 4
+            return max(made, lev(x['n']))
         pal = [t['panel2'], t['tones'][2], t['tones'][4], t['tones'][6], t['tones'][8]] if k == 'dark' else [t['panel2'], t['tones'][8], t['tones'][6], t['tones'][5], t['tones'][2]]
         cen = lambda c_, r: (gx + c_ * step + cell / 2.0, gy + r * step + cell / 2.0)
         route = []; dist = {}; total = 0.0
@@ -367,9 +393,9 @@ def snake(d, f):
         for i, x in enumerate(days):
             c_, r = (i + off) // 7, (i + off) % 7
             px, py = gx + c_ * step, gy + r * step
-            b.append('<rect x="%.1f" y="%.1f" width="%d" height="%d" rx="3" fill="%s"/>' % (px, py, cell, cell, pal[lev(x['n'])]))
-            if x['n']:
-                eaten += x['n']
+            b.append('<rect x="%.1f" y="%.1f" width="%d" height="%d" rx="3" fill="%s"/>' % (px, py, cell, cell, pal[field(x)]))
+            if field(x):
+                eaten += 1
                 # the cover that hides an eaten cell runs on the same SMIL clock as the snake, so they can never drift apart
                 b.append('<rect x="%.1f" y="%.1f" width="%d" height="%d" rx="3" fill="%s" opacity="0">%s</rect>'
                          % (px - 0.5, py - 0.5, cell + 1, cell + 1, pal[0], '' if frozen else
@@ -385,12 +411,9 @@ def snake(d, f):
         eye = t['night'] if k == 'dark' else '#FFFFFF'
         b.append('<g><circle r="7" fill="%s"/><circle cx="2.4" cy="-2.6" r="1.5" fill="%s"/><circle cx="2.4" cy="2.6" r="1.5" fill="%s"/>'
                  '<animateMotion dur="%ds" repeatCount="indefinite" rotate="auto"><mpath href="#route"/></animateMotion></g>' % (t['hi'], eye, eye, Dur))
-        b.append('<text class="m" x="%.1f" y="%.1f" font-size="10.8" fill="%s">one lap = %d contributions eaten, then they grow back</text>' % (gx, H - 14, t['soft'], eaten))
-        b.append('<text class="m" x="%.1f" y="%.1f" font-size="10.8" fill="%s" text-anchor="end">less</text>' % (W - gx - 5 * 15 - 38, H - 14, t['mute']))
-        b.append('<text class="m" x="%.1f" y="%.1f" font-size="10.8" fill="%s" text-anchor="end">more</text>' % (W - gx, H - 14, t['mute']))
-        for i in range(5):
-            b.append('<rect x="%.1f" y="%.1f" width="11" height="11" rx="3" fill="%s"/>' % (W - gx - 5 * 15 - 30 + i * 15, H - 24, pal[i]))
-        return svg(W, int(H), ''.join(b), 'A snake that eats my contribution graph of the last year')
+        b.append('<text class="m" x="%.1f" y="%.1f" font-size="10.8" fill="%s">one lap = %d squares eaten, then the field grows back</text>' % (gx, H - 14, t['soft'], eaten))
+        b.append('<text class="m" x="%.1f" y="%.1f" font-size="10.8" fill="%s" text-anchor="end">a field for the snake / my real graph is the mountains</text>' % (W - gx, H - 14, t['mute']))
+        return svg(W, int(H), ''.join(b), 'A snake running laps over a field of cerulean squares and eating them')
     return draw
 
 
@@ -402,7 +425,4 @@ def build(refresh=True):
     both('mountains', mountains(d, f))
     both('numbers', numbers(d, f))
     both('snake', snake(d, f))
-    feat = featured(d)
-    for i, r in enumerate(feat):
-        both('card-%d' % (i + 1), card(r))
-    return d, f, feat
+    return d, f, []

@@ -50,13 +50,13 @@
       "id": "work",
       "num": "04",
       "title": "repositories",
-      "note": "everything public, newest first"
+      "note": "the numbers, and every public repository"
     },
     {
       "id": "snake",
       "num": "05",
       "title": "the snake",
-      "note": "it eats my contribution graph"
+      "note": "it eats the field, the field grows back"
     }
   ],
   "stack": [
@@ -247,22 +247,16 @@
     }
   ],
   "intro": "I'm Adawo. Java and Spring Boot are home base; around them I build the web with React, Next.js and Astro, and make motion design and 3D with code: GSAP, Blender, FFmpeg.",
-  "featured": [
-    {
-      "name": "liketime-app",
-      "desc": "Attendance tracking and payroll for teachers. Java 21, Spring Boot, MySQL and Flyway on the server, React and TypeScript in front."
-    },
-    {
-      "name": "depak-fashion",
-      "desc": "Landing page for DEPAK.fashion, a mountain clothing brand. Astro, serverless functions, a lead form wired to Supabase and Telegram."
-    },
-    {
-      "name": "NexusFlow",
-      "desc": "A plain to-do list dressed in a space theme."
-    },
-    {
-      "name": "sky-journey-tour",
-      "desc": "Landing page for a tour company, built by hand in HTML."
-    }
-  ]
+  "music": {
+    "artist": "TV Girl",
+    "tracks": [
+      "Lovers Rock",
+      "Not Allowed",
+      "Cigarettes out the Window",
+      "Blue Hair",
+      "Birds Dont Sing",
+      "Louise",
+      "Taking What's Not Yours"
+    ]
+  }
 }
