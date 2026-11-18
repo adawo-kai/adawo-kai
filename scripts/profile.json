@@ -1,0 +1,268 @@
+{
+  "login": "adawo-kai",
+  "name": "ADAWO",
+  "role": "Backend developer",
+  "tagline": [
+    "I build the server side in Java,",
+    "then the web, the motion and the pixels around it."
+  ],
+  "facts": [
+    "java  /  web  /  motion design",
+    "utc+6  /  open to collaboration"
+  ],
+  "utc_offset_hours": 6,
+  "links": [
+    {
+      "id": "telegram",
+      "icon": "telegram",
+      "label": "Telegram",
+      "sub": "@adawo_creator",
+      "url": "https://t.me/adawo_creator"
+    },
+    {
+      "id": "gmail",
+      "icon": "gmail",
+      "label": "Gmail",
+      "sub": "alisherov.ilim99@gmail.com",
+      "url": "mailto:alisherov.ilim99@gmail.com"
+    }
+  ],
+  "sections": [
+    {
+      "id": "room",
+      "num": "01",
+      "title": "live room",
+      "note": "redrawn from my local time and my commits"
+    },
+    {
+      "id": "mountains",
+      "num": "02",
+      "title": "commit mountains",
+      "note": "one ridge per week of the last year"
+    },
+    {
+      "id": "stack",
+      "num": "03",
+      "title": "stack",
+      "note": "what I actually build with"
+    },
+    {
+      "id": "work",
+      "num": "04",
+      "title": "repositories",
+      "note": "everything public, newest first"
+    },
+    {
+      "id": "snake",
+      "num": "05",
+      "title": "the snake",
+      "note": "it eats my contribution graph"
+    }
+  ],
+  "stack": [
+    {
+      "group": "backend",
+      "items": [
+        [
+          "Java",
+          "openjdk"
+        ],
+        [
+          "Spring Boot",
+          "springboot"
+        ],
+        [
+          "Node.js",
+          "nodedotjs"
+        ],
+        [
+          "Express",
+          "express"
+        ],
+        [
+          "Python",
+          "python"
+        ],
+        [
+          "Telegram bots",
+          "telegram"
+        ],
+        [
+          "MySQL",
+          "mysql"
+        ],
+        [
+          "PostgreSQL",
+          "postgresql"
+        ],
+        [
+          "Supabase",
+          "supabase"
+        ],
+        [
+          "SQLite",
+          "sqlite"
+        ],
+        [
+          "Flyway",
+          "flyway"
+        ]
+      ]
+    },
+    {
+      "group": "web",
+      "items": [
+        [
+          "TypeScript",
+          "typescript"
+        ],
+        [
+          "JavaScript",
+          "javascript"
+        ],
+        [
+          "React",
+          "react"
+        ],
+        [
+          "Next.js",
+          "nextdotjs"
+        ],
+        [
+          "Astro",
+          "astro"
+        ],
+        [
+          "Vite",
+          "vite"
+        ],
+        [
+          "Tailwind CSS",
+          "tailwindcss"
+        ],
+        [
+          "React Native",
+          "react"
+        ],
+        [
+          "Expo",
+          "expo"
+        ],
+        [
+          "HTML5",
+          "html5"
+        ],
+        [
+          "CSS3",
+          "css3"
+        ]
+      ]
+    },
+    {
+      "group": "motion + 3d",
+      "items": [
+        [
+          "GSAP",
+          "greensock"
+        ],
+        [
+          "HyperFrames",
+          ""
+        ],
+        [
+          "Remotion",
+          ""
+        ],
+        [
+          "Three.js",
+          "threedotjs"
+        ],
+        [
+          "Blender",
+          "blender"
+        ],
+        [
+          "FFmpeg",
+          "ffmpeg"
+        ],
+        [
+          "Playwright",
+          ""
+        ]
+      ]
+    },
+    {
+      "group": "ai tooling",
+      "items": [
+        [
+          "Claude Code",
+          "claude"
+        ],
+        [
+          "MCP",
+          ""
+        ],
+        [
+          "Whisper",
+          "openai"
+        ],
+        [
+          "ElevenLabs",
+          "elevenlabs"
+        ],
+        [
+          "OpenAI API",
+          "openai"
+        ]
+      ]
+    },
+    {
+      "group": "ops",
+      "items": [
+        [
+          "Docker",
+          "docker"
+        ],
+        [
+          "Vercel",
+          "vercel"
+        ],
+        [
+          "Nginx",
+          "nginx"
+        ],
+        [
+          "Git",
+          "git"
+        ],
+        [
+          "GitHub Actions",
+          "githubactions"
+        ],
+        [
+          "Maven",
+          "apachemaven"
+        ]
+      ]
+    }
+  ],
+  "intro": "I'm Adawo. Java and Spring Boot are home base; around them I build the web with React, Next.js and Astro, and make motion design and 3D with code: GSAP, Blender, FFmpeg.",
+  "featured": [
+    {
+      "name": "liketime-app",
+      "desc": "Attendance tracking and payroll for teachers. Java 21, Spring Boot, MySQL and Flyway on the server, React and TypeScript in front."
+    },
+    {
+      "name": "depak-fashion",
+      "desc": "Landing page for DEPAK.fashion, a mountain clothing brand. Astro, serverless functions, a lead form wired to Supabase and Telegram."
+    },
+    {
+      "name": "NexusFlow",
+      "desc": "A plain to-do list dressed in a space theme. JavaScript, no frameworks."
+    },
+    {
+      "name": "sky-journey-tour",
+      "desc": "Tour landing page: not Switzerland, but feels like it, with more heart."
+    }
+  ]
+}
