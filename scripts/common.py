@@ -11,10 +11,10 @@ SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans',Helvetica,Arial,
 
 # cerulean #007BA7 is the one brand colour; everything else is a tint or a shade of it
 THEMES = {
-    'dark': dict(bg='#0d1117', panel='#0A1B24', panel2='#0E2632', line='#16485C', ink='#E4F6FC', soft='#93BCCB', mute='#557F90',
+    'dark': dict(bg='#0d1117', panel='#0A1B24', panel2='#0E2632', line='#16485C', ink='#E4F6FC', soft='#A3C8D6', mute='#7FAFC2',
                  core='#007BA7', hi='#35B6E6', glow='#8ADBF7', deep='#0A5F82', night='#061219',
                  tones=['#0F5270', '#0F6184', '#0C7098', '#0880AD', '#0A93C4', '#22A7D8', '#45BAE5', '#73CDEF', '#A8E1F7', '#E6F8FE']),
-    'light': dict(bg='#ffffff', panel='#F2FAFD', panel2='#E3F3F9', line='#B7DDEB', ink='#05354A', soft='#41707F', mute='#7BA3B2',
+    'light': dict(bg='#ffffff', panel='#F2FAFD', panel2='#E3F3F9', line='#B7DDEB', ink='#05354A', soft='#35606F', mute='#557F90',
                   core='#007BA7', hi='#0A93C4', glow='#005B80', deep='#00506F', night='#D5EDF6',
                   tones=['#03303F', '#043E53', '#054C66', '#045C7C', '#016C93', '#007BA7', '#2C96BF', '#5FB3D4', '#93CDE4', '#C3E4F1']),
 }

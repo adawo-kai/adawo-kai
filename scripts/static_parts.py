@@ -10,7 +10,7 @@ def hero(t, k):
     c = cfg()
     d = json.load(open(os.path.join(HERE, 'portrait.json')))
     H = 476
-    px0, py0, cw, rh, fs = 24, 30, 4.15, 8.1, 7.2
+    px0, py0, cw, rh, fs = 24, 14, 4.15, 8.1, 7.2
     ramp = DARK_RAMP if k == 'dark' else LIGHT_RAMP
     rows = []
     for y, row in enumerate(d['lum']):
@@ -37,10 +37,13 @@ def hero(t, k):
     pw, ph = d['cols'] * cw, d['rows'] * rh
     body = ['<rect x="0.5" y="0.5" width="%d" height="%d" rx="16" fill="%s" stroke="%s"/>' % (W - 1, H - 1, t['panel'], t['line'])]
     body.append('<defs><linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="%s" stop-opacity="0"/>'
-                '<stop offset=".5" stop-color="%s" stop-opacity=".09"/><stop offset="1" stop-color="%s" stop-opacity="0"/></linearGradient>'
-                '<clipPath id="pc"><rect x="%.1f" y="%.1f" width="%.1f" height="%.1f"/></clipPath></defs>' % (t['glow'], t['glow'], t['glow'], px0, py0, pw, ph))
-    body.append('<g>%s</g>' % ''.join(rows))
-    body.append('<g clip-path="url(#pc)"><rect class="scan" x="%.1f" y="%.1f" width="%.1f" height="54" fill="url(#sg)"/></g>' % (px0, py0 - 54, pw))
+                '<stop offset=".5" stop-color="%s" stop-opacity=".22"/><stop offset="1" stop-color="%s" stop-opacity="0"/></linearGradient>'
+                '<clipPath id="pc"><rect x="%.1f" y="%.1f" width="%.1f" height="%.1f"/></clipPath>'
+                '<linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".84" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>'
+                '<mask id="fade" maskUnits="userSpaceOnUse" x="0" y="0" width="%d" height="%d"><rect x="0" y="%.1f" width="%d" height="%.1f" fill="url(#fg)"/></mask></defs>'
+                % (t['glow'], t['glow'], t['glow'], px0, py0, pw, ph, W, H, py0, W, ph + 6))
+    body.append('<g mask="url(#fade)">%s</g>' % ''.join(rows))
+    body.append('<g clip-path="url(#pc)"><rect class="scan" x="%.1f" y="%.1f" width="%.1f" height="16" fill="url(#sg)"/></g>' % (px0, py0 - 16, pw))
     # right column
     x0 = 478
     body.append('<text class="m" x="%d" y="78" font-size="11.5" fill="%s" letter-spacing="1.2">github.com/%s</text>' % (x0, t['mute'], esc(c['login'])))

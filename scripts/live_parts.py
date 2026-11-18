@@ -117,7 +117,7 @@ def room(d, f):
         b.append('<text class="m" x="%d" y="%d" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1.5">%s</text>'
                  % (kx + 29, ky + 13, MONTHS[f['now'].month - 1].upper()))
         b.append('<text x="%d" y="%d" font-size="26" font-weight="700" fill="%s" text-anchor="middle">%d</text>' % (kx + 29, ky + 46, t['ink'], f['now'].day))
-        b.append('<text class="m" x="%d" y="%d" font-size="8.5" fill="%s" text-anchor="middle">7d: %d</text>' % (kx + 29, ky + 60, t['mute'], f['week7']))
+        b.append('<text class="m" x="%d" y="%d" font-size="9.5" fill="%s" text-anchor="middle">7d: %d</text>' % (kx + 29, ky + 60, t['mute'], f['week7']))
         # ---- shelf: one book per language, as tall as its share of my code; the plant grows with contributions
         sx0, sy = 420, 128
         b.append('<rect x="%d" y="%d" width="390" height="6" rx="3" fill="%s"/>' % (sx0, sy, fr))
@@ -129,7 +129,7 @@ def room(d, f):
             lean = 0
             b.append('<g transform="rotate(%d %.1f %d)"><rect x="%.1f" y="%.1f" width="%d" height="%.1f" rx="2.5" fill="%s"/>'
                      '<rect x="%.1f" y="%.1f" width="%d" height="2" fill="%s" opacity=".5"/>'
-                     '<text class="m" transform="translate(%.1f %.1f) rotate(-90)" font-size="8.6" font-weight="700" fill="%s">%s</text></g>'
+                     '<text class="m" transform="translate(%.1f %.1f) rotate(-90)" font-size="9.6" font-weight="700" fill="%s">%s</text></g>'
                      % (lean, x + bw, sy, x, sy - bh, bw, bh, col, x, sy - bh + 6, bw, t['panel'], x + bw / 2 + 3, sy - 6,
                         t['night'] if k == 'dark' else '#FFFFFF', esc(name[:10])))
             x += bw + 3
@@ -150,28 +150,28 @@ def room(d, f):
             b.append('<rect x="%d" y="%d" width="7" height="58" fill="%s"/>' % (lx, dy + 9, fr))
         mx, my, mw, mh = 478, 150, 214, 78
         asleep = f['ago'] is None or f['ago'] > 14
-        b.append('<rect x="%d" y="%d" width="%d" height="%d" rx="9" fill="%s" stroke="%s" stroke-width="3"/>' % (mx, my, mw, mh, '#04161F', fr))
+        b.append('<rect x="%d" y="%d" width="%d" height="%d" rx="9" fill="%s" stroke="%s" stroke-width="3"/>' % (mx, my, mw, mh, '#04161F' if k == 'dark' else '#0B2A36', fr))
         b.append('<rect x="%d" y="%d" width="10" height="10" fill="%s"/><rect x="%d" y="%d" width="62" height="5" rx="2" fill="%s"/>' % (mx + mw // 2 - 5, my + mh, fr, mx + mw // 2 - 31, dy - 5, fr))
         if f['last']:
             r = f['last']
-            b.append('<text class="m" x="%d" y="%d" font-size="10" fill="#557F90">$ git log -1 --all</text>' % (mx + 13, my + 20))
+            b.append('<text class="m" x="%d" y="%d" font-size="10" fill="#7FAFC2">$ git log -1 --all</text>' % (mx + 13, my + 20))
             b.append('<text class="m" x="%d" y="%d" font-size="12.5" font-weight="700" fill="#63C6EA">%s</text>' % (mx + 13, my + 39, esc(r['name'][:24])))
-            b.append('<text class="m" x="%d" y="%d" font-size="10" fill="#93BCCB">%s  /  pushed %s</text>' % (mx + 13, my + 55, esc(r['lang'] or 'docs'), ago_text(f['ago'])))
-            b.append('<text class="m" x="%d" y="%d" font-size="10" fill="#557F90">$</text><rect class="cur" x="%d" y="%d" width="6" height="11" fill="#63C6EA"/>'
+            b.append('<text class="m" x="%d" y="%d" font-size="10.5" fill="#BFDCE7">%s  /  pushed %s</text>' % (mx + 13, my + 55, esc(r['lang'] or 'docs'), ago_text(f['ago'])))
+            b.append('<text class="m" x="%d" y="%d" font-size="10" fill="#7FAFC2">$</text><rect class="cur" x="%d" y="%d" width="6" height="11" fill="#63C6EA"/>'
                      % (mx + 13, my + 70, mx + 24, my + 61))
         if asleep:
-            b.append('<text class="m zz" x="%d" y="%d" font-size="12" fill="%s">z z z</text>' % (mx + mw - 44, my - 8, t['mute']))
+            b.append('<text class="m zz" x="%d" y="%d" font-size="10" fill="#7FAFC2" text-anchor="end">asleep  z z z</text>' % (mx + mw - 13, my + 70))
         lx = 428
         b.append('<rect x="%d" y="%d" width="34" height="5" rx="2" fill="%s"/>' % (lx - 17, dy - 5, t['core']))
         b.append('<path d="M%d %d L%d %d L%d %d" fill="none" stroke="%s" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>' % (lx, dy - 5, lx - 8, dy - 46, lx + 16, dy - 70, t['core']))
         if night:
             b.append('<polygon class="glowc" points="%d,%d %d,%d %d,%d %d,%d" fill="url(#cone)"/>' % (lx + 6, dy - 62, lx + 34, dy - 62, lx + 96, dy, lx - 40, dy))
         b.append('<path d="M%d %d l30 0 l8 14 l-46 0 z" fill="%s"/>' % (lx + 5, dy - 78, t['hi'] if night else t['deep']))
-        ux, uy = 742, dy
+        ux, uy = 726, dy
         b.append('<path d="M%d %d h30 l-3 22 a4 4 0 0 1 -4 3 h-16 a4 4 0 0 1 -4 -3 z" fill="%s"/><path d="M%d %d a8 8 0 0 1 0 14" fill="none" stroke="%s" stroke-width="3"/>'
                  % (ux - 15, uy - 25, t['ink'] if k == 'dark' else '#FFFFFF', ux + 14, uy - 20, t['ink'] if k == 'dark' else '#FFFFFF'))
         if k == 'light':
-            b.append('<path d="M%d %d h30 l-3 22 a4 4 0 0 1 -4 3 h-16 a4 4 0 0 1 -4 -3 z" fill="none" stroke="%s" stroke-width="1.5"/>' % (ux - 15, uy - 25, fr))
+            b.append('<path d="M%d %d h30 l-3 22 a4 4 0 0 1 -4 3 h-16 a4 4 0 0 1 -4 -3 z" fill="none" stroke="%s" stroke-width="1.6"/>' % (ux - 15, uy - 25, t['core']))
         for i in range(3):
             b.append('<path class="steam" style="animation-delay:%.1fs" d="M%d %d q5 -7 0 -14 q-5 -7 0 -14" fill="none" stroke="%s" stroke-width="1.8" stroke-linecap="round"/>'
                      % (i * 0.9, ux - 8 + i * 8, uy - 30, t['soft']))

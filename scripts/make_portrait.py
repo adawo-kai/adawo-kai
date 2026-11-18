@@ -39,10 +39,12 @@ while q:
     q.extend(((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)))
 bg |= erase
 
-g = ImageOps.autocontrast(im.convert('L'), cutoff=1).filter(ImageFilter.UnsharpMask(radius=4, percent=160, threshold=2))
+g = ImageOps.autocontrast(im.convert('L'), cutoff=1)
+g = g.filter(ImageFilter.UnsharpMask(radius=14, percent=110, threshold=0))      # local contrast: eyes, brows, mouth against the skin
+g = g.filter(ImageFilter.UnsharpMask(radius=3, percent=150, threshold=2))
 # equalise tones over my pixels only, so the face does not collapse into two or three levels
 eq = ImageOps.equalize(g, mask=Image.fromarray((~bg * 255).astype(np.uint8)))
-g = Image.blend(g, eq, 0.55)
+g = Image.blend(g, eq, 0.6)
 small = np.asarray(g.resize((COLS, ROWS), Image.LANCZOS)).astype(np.float32) / 255.0
 fg = np.asarray(Image.fromarray((~bg * 255).astype(np.uint8)).resize((COLS, ROWS), Image.BOX)).astype(np.float32) / 255.0
 small = np.clip(small, 0, 1) ** 0.9

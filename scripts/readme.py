@@ -40,15 +40,15 @@ def write(d, f, feat):
 
     o.append(head('work'))
     o.append(pic('numbers', '%d public repositories, %d contributions in the last year' % (len(d['repos']), d['total'])))
-    cards = ['<a href="%s" title="%s">%s</a>' % (r['url'], esc(r['name']), pic('card-%d' % (i + 1), '%s: %s' % (r['name'], r['desc']), 'width="49%"')) for i, r in enumerate(feat)]
+    cards = ['<a href="%s" title="%s">%s</a>' % (r['url'], esc(r['name']), pic('card-%d' % (i + 1), '%s: %s' % (r['name'], r['desc']), 'width="49.5%"')) for i, r in enumerate(feat)]
     for i in range(0, len(cards), 2):            # two cards per row, a paragraph per row so the rows keep a gap
         o.append('<p align="center">\n  ' + '\n  '.join(cards[i:i + 2]) + '\n</p>')
     rows = []
     for r in d['repos']:
-        rows.append('<tr><td><a href="%s"><b>%s</b></a>%s</td><td>%s</td><td>%s&nbsp;%s</td><td>%s</td></tr>'
-                    % (r['url'], esc(r['name']), ' <sub>fork</sub>' if r['fork'] else '', esc(r['lang'] or '-'), MONTHS[int(r['pushed'][5:7]) - 1], r['pushed'][:4], esc(r['desc'])))
+        rows.append('<tr><td><a href="%s" title="%s"><b>%s</b></a>%s</td><td>%s</td><td>%s&nbsp;%s</td></tr>'
+                    % (r['url'], esc(r['desc']), esc(r['name']), ' <sub>fork</sub>' if r['fork'] else '', esc(r['lang']), MONTHS[int(r['pushed'][5:7]) - 1], r['pushed'][:4]))
     o.append('<details>\n<summary><b>All %d public repositories</b></summary>\n<br>\n\n<table>\n<tr><th align="left">repository</th><th align="left">language</th>'
-             '<th align="left">last push</th><th align="left">about</th></tr>\n%s\n</table>\n\n</details>' % (len(d['repos']), '\n'.join(rows)))
+             '<th align="left">last push</th></tr>\n%s\n</table>\n\n</details>' % (len(d['repos']), '\n'.join(rows)))
 
     o.append(head('snake'))
     o.append(pic('snake', 'A snake eating my contribution graph of the last year'))

@@ -258,11 +258,11 @@
     },
     {
       "name": "NexusFlow",
-      "desc": "A plain to-do list dressed in a space theme. JavaScript, no frameworks."
+      "desc": "A plain to-do list dressed in a space theme."
     },
     {
       "name": "sky-journey-tour",
-      "desc": "Tour landing page: not Switzerland, but feels like it, with more heart."
+      "desc": "Landing page for a tour company, built by hand in HTML."
     }
   ]
 }
